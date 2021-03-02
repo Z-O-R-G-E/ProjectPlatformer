@@ -2,8 +2,8 @@
 {
     internal class PlayerModel
     {
-        public float AnimationsSpeed = 10f;
-        public float MoveSpeed = 0.3f;
-        public float JumpForce = 1f;
+        public float AnimationsSpeed = 10.0f;
+        public float MoveSpeed = 100.0f;
+        public float JumpForce = 1.0f;
     }
 }

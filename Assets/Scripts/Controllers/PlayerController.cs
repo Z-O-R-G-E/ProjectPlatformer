@@ -10,7 +10,6 @@ namespace ProjectPlatformer
         private LayerMask _groundLayer = 1;
 
         private const float _movingThresh = 0.1f;
-        private const float _flyThresh = 1f;
 
         private Vector2 _movementVector
         {
@@ -42,7 +41,7 @@ namespace ProjectPlatformer
             var goSideWay = Mathf.Abs(_movementVector.x) > _movingThresh;
             if (goSideWay)
             {
-                _playerView.MoveHorizontal(_movementVector, _playerModel.MoveSpeed);
+                _playerView.MoveHorizontal(_movementVector.x, _playerModel.MoveSpeed);
                 _playerView.Flip(_movementVector.x);
             }
             _spriteAnimator.StartAnimation(_playerView.SpriteRenderer, goSideWay ? AnimState.WALK : AnimState.IDLE, true, _playerModel.AnimationsSpeed);

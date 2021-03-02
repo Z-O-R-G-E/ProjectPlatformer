@@ -6,14 +6,14 @@ namespace ProjectPlatformer
     {
         private Vector3 _leftScale = new Vector3(-1, 1, 1);
         private Vector3 _rightScale = new Vector3(1, 1, 1);
-        public void MoveHorizontal(Vector2 movementVector, float MoveSpeed)
+        public void MoveHorizontal(float movementVector, float MoveSpeed)
         {
-            Rigidbody2D.AddForce(movementVector * MoveSpeed, ForceMode2D.Impulse);
+            Rigidbody2D.velocity = Rigidbody2D.velocity.Change(x: Time.fixedDeltaTime * MoveSpeed * (movementVector < 0 ? -1 : 1));
         }
 
-        public void Flip(float xAxisInput)
+        public void Flip(float movementVector)
         {
-            transform.localScale = (xAxisInput < 0 ? _leftScale : _rightScale);
+            transform.localScale = (movementVector < 0 ? _leftScale : _rightScale);
         }
         
         public void Jump(float jumpForce)
