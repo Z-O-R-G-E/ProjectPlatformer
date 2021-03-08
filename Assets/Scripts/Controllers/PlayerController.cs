@@ -7,7 +7,7 @@ namespace ProjectPlatformer
         private PlayerView _playerView;
         private PlayerModel _playerModel;
         private SpriteAnimator _spriteAnimator;
-        private LayerMask _groundLayer = 1;
+        private readonly ContactsPoller _contactsPoller;
 
         private const float _movingThresh = 0.1f;
 
@@ -28,42 +28,46 @@ namespace ProjectPlatformer
             _playerView.Rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             _playerModel = new PlayerModel();
             _spriteAnimator = spriteAnimator;
+            _contactsPoller = new ContactsPoller(_playerView.Collider2D);
         }
 
         public void FixedExecute()
         {
             MoveLogic();
             JumpLogic();
+            _contactsPoller.Execute();
         }
 
         private void MoveLogic()
         {
-            var goSideWay = Mathf.Abs(_movementVector.x) > _movingThresh;
-            if (goSideWay)
+            var walks = Mathf.Abs(_movementVector.x) > _movingThresh;
+            if (walks)
             {
-                _playerView.MoveHorizontal(_movementVector.x, _playerModel.MoveSpeed);
                 _playerView.Flip(_movementVector.x);
             }
-            _spriteAnimator.StartAnimation(_playerView.SpriteRenderer, goSideWay ? AnimState.WALK : AnimState.IDLE, true, _playerModel.AnimationsSpeed);
+
+            var newVelocity = 0.0f;
+
+            if (walks &&
+                (_movementVector.x > 0 || !_contactsPoller.HasLeftContacts) &&
+                (_movementVector.x < 0 || !_contactsPoller.HasRightContacts))
+            {
+                newVelocity = Time.fixedDeltaTime * _playerModel.MoveSpeed * (_movementVector.x < 0 ? -1 : 1);
+            }
+            _playerView.MoveHorizontal(newVelocity);
+            _spriteAnimator.StartAnimation(_playerView.SpriteRenderer, walks ? AnimState.WALK : AnimState.IDLE, true, _playerModel.AnimationsSpeed);
         }
 
         private void JumpLogic()
         {
-            if (IsGrounded() && (Input.GetAxis("Jump") > 0))
+            if (_contactsPoller.HasBottomContacts && (Input.GetAxis("Jump") > 0))
             {
                 _playerView.Jump(_playerModel.JumpForce);
             }
-            if (!IsGrounded()) 
+            if (!_contactsPoller.HasBottomContacts) 
             {
                 _spriteAnimator.StartAnimation(_playerView.SpriteRenderer, AnimState.JUMPUP, true, _playerModel.AnimationsSpeed);
             }
-        }
-
-        bool IsGrounded()
-        {
-            RaycastHit2D hit = Physics2D.BoxCast(_playerView.Collider2D.bounds.center, _playerView.Collider2D.bounds.size, 0, Vector2.down, 0.1f, _groundLayer);
-
-            return hit.collider != null;
         }
     }
 }

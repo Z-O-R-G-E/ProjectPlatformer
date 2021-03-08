@@ -1,0 +1,6 @@
+﻿namespace ProjectPlatformer
+{
+    class BulletController
+    {
+    }
+}

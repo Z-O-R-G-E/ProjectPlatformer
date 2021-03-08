@@ -19,8 +19,10 @@ namespace ProjectPlatformer{
         private PlayerController _playerController;
         private SpriteAnimator _playerAnimator;
 
-        [SerializeField]private TurretView _turretView;
+        private TurretView _turretView;
         private TurretController _turretController;
+
+        private BulletView _bulletView;
 
         //private InputController _inputController;
 
@@ -33,7 +35,9 @@ namespace ProjectPlatformer{
 
             _playerView = _reference.Player;
             _mainCamera = _reference.MainCamera;
-            
+            _turretView = _reference.Turret;
+            _bulletView = _reference.Bullet;
+
             _paralaxManager = new ParalaxManager(_mainCamera.transform, _background.transform);
             _interactiveObjects.Add(_paralaxManager);
             
@@ -46,7 +50,7 @@ namespace ProjectPlatformer{
             _playerController = new PlayerController(_playerView, _playerAnimator);
             _fixedInteractiveObjects.Add(_playerController);
 
-            _turretController = new TurretController(_turretView, _playerView);
+            _turretController = new TurretController(_turretView, _playerView, _bulletView);
             _interactiveObjects.Add(_turretController);
 
             /*

@@ -64,20 +64,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Controllers\BulletController.cs" />
     <Compile Include="Assets\Scripts\Controllers\CameraController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameController.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Controllers\TurretController.cs" />
     <Compile Include="Assets\Scripts\Enums\AnimState.cs" />
+    <Compile Include="Assets\Scripts\Helper\ContactsPoller.cs" />
     <Compile Include="Assets\Scripts\Helper\Reference.cs" />
     <Compile Include="Assets\Scripts\Helper\Utils.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IExecute.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IFixedExecute.cs" />
     <Compile Include="Assets\Scripts\Managers\ParalaxManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpriteAnimator.cs" />
+    <Compile Include="Assets\Scripts\Models\BulletModel.cs" />
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
+    <Compile Include="Assets\Scripts\Models\TurretModel.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\SpriteAnimationsConfig.cs" />
+    <Compile Include="Assets\Scripts\Views\BulletView.cs" />
     <Compile Include="Assets\Scripts\Views\LevelObjectView.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerView.cs" />
     <Compile Include="Assets\Scripts\Views\TurretView.cs" />
