@@ -24,6 +24,10 @@ namespace ProjectPlatformer{
 
         private BulletView _bulletView;
 
+        private GemManager _gemManager;
+        private GemView _gemView;
+        private SpriteAnimator _gemAnimator;
+
         //private InputController _inputController;
 
         private void Awake()
@@ -37,6 +41,7 @@ namespace ProjectPlatformer{
             _mainCamera = _reference.MainCamera;
             _turretView = _reference.Turret;
             _bulletView = _reference.Bullet;
+            _gemView = _reference.Gem;
 
             _paralaxManager = new ParalaxManager(_mainCamera.transform, _background.transform);
             _interactiveObjects.Add(_paralaxManager);
@@ -46,12 +51,17 @@ namespace ProjectPlatformer{
             
             _playerAnimator = new SpriteAnimator(_reference.PlayerConfig);
             _interactiveObjects.Add(_playerAnimator);
-
+            
             _playerController = new PlayerController(_playerView, _playerAnimator);
             _fixedInteractiveObjects.Add(_playerController);
 
             _turretController = new TurretController(_turretView, _playerView, _bulletView);
             _interactiveObjects.Add(_turretController);
+
+            _gemAnimator = new SpriteAnimator(_reference.GemConfig);
+            _interactiveObjects.Add(_gemAnimator);
+
+            _gemManager = new GemManager(_playerView, _gemView, _gemAnimator);
 
             /*
             _inputController = new InputController(_playerView);

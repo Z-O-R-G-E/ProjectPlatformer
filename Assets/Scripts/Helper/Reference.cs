@@ -7,9 +7,11 @@ namespace ProjectPlatformer
     {
         private PlayerView _player;
         private TurretView _turret;
+        private GemView _gem;
         private BulletView _bullet;
         private Camera _mainCamera;
         private SpriteAnimationsConfig _playerConfig;
+        private SpriteAnimationsConfig _gemConfig;
 
         public PlayerView Player
         {
@@ -34,6 +36,19 @@ namespace ProjectPlatformer
                     _turret = Object.Instantiate(gameObject);
                 }
                 return _turret;
+            }
+        }
+
+        public GemView Gem
+        {
+            get
+            {
+                if (_gem == null)
+                {
+                    var gameObject = Resources.Load<GemView>("Gem");
+                    _gem = Object.Instantiate(gameObject);
+                }
+                return _gem;
             }
         }
 
@@ -73,6 +88,19 @@ namespace ProjectPlatformer
                     _playerConfig = Object.Instantiate(gameObject);
                 }
                 return _playerConfig;
+            }
+        }
+
+        public SpriteAnimationsConfig GemConfig
+        {
+            get
+            {
+                if (_gemConfig == null)
+                {
+                    var gameObject = Resources.Load<SpriteAnimationsConfig>("GemAnimConfig");
+                    _gemConfig = Object.Instantiate(gameObject);
+                }
+                return _gemConfig;
             }
         }
     }

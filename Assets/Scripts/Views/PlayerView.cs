@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace ProjectPlatformer
 {
     internal class PlayerView : LevelObjectView
     {
+        public Action<GemView> OnLevelObjectContact { get; set; }
+
         private Vector3 _leftScale = new Vector3(-1, 1, 1);
         private Vector3 _rightScale = new Vector3(1, 1, 1);
         public void MoveHorizontal(float velocity)
@@ -20,6 +23,11 @@ namespace ProjectPlatformer
         {
             Rigidbody2D.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-        
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            var levelObject = collision.gameObject.GetComponent<GemView>();
+            OnLevelObjectContact?.Invoke(levelObject);
+        }
     }
 }

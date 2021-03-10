@@ -76,6 +76,8 @@
     <Compile Include="Assets\Scripts\Helper\Utils.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IExecute.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IFixedExecute.cs" />
+    <Compile Include="Assets\Scripts\Managers\GemManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\LevelCompleteManager.cs" />
     <Compile Include="Assets\Scripts\Managers\ParalaxManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpriteAnimator.cs" />
     <Compile Include="Assets\Scripts\Models\BulletModel.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="Assets\Scripts\Models\TurretModel.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\SpriteAnimationsConfig.cs" />
     <Compile Include="Assets\Scripts\Views\BulletView.cs" />
+    <Compile Include="Assets\Scripts\Views\GemView.cs" />
     <Compile Include="Assets\Scripts\Views\LevelObjectView.cs" />
     <Compile Include="Assets\Scripts\Views\PlayerView.cs" />
     <Compile Include="Assets\Scripts\Views\TurretView.cs" />
