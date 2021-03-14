@@ -10,6 +10,8 @@ namespace ProjectPlatformer{
         private Reference _reference;
         private List<IExecute> _interactiveObjects;
         private List<IFixedExecute> _fixedInteractiveObjects;
+        [SerializeField] private List<LevelObjectView> _deathZones;
+        [SerializeField] private List<LevelObjectView> _winZones;
 
         private Camera _mainCamera;
         private CameraController _cameraController;
@@ -28,6 +30,7 @@ namespace ProjectPlatformer{
         private GemView _gemView;
         private SpriteAnimator _gemAnimator;
 
+        private LevelCompleteManager _levelCompleteManager;
         //private InputController _inputController;
 
         private void Awake()
@@ -63,6 +66,7 @@ namespace ProjectPlatformer{
 
             _gemManager = new GemManager(_playerView, _gemView, _gemAnimator);
 
+            _levelCompleteManager = new LevelCompleteManager(_playerView, _deathZones, _winZones);
             /*
             _inputController = new InputController(_playerView);
             _interactiveObjects.Add(_inputController);

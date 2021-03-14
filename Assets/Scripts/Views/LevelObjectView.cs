@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 
 namespace ProjectPlatformer
@@ -14,6 +15,8 @@ namespace ProjectPlatformer
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Rigidbody2D Rigidbody2D => _rigidbody;
         public Collider2D Collider2D => _collider;
+
+        public Action<LevelObjectView> OnLevelObjectContact { get; set; }
 
         private void Awake()
         {

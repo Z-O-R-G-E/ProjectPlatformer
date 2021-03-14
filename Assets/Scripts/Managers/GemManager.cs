@@ -8,11 +8,11 @@ namespace ProjectPlatformer
     {
         private const float _animationSpeed = 10;
 
-        private PlayerView _playerView;
+        private LevelObjectView _playerView;
         private SpriteAnimator _spriteAnimator;
-        private GemView _gemView;
+        private LevelObjectView _gemView;
 
-        public GemManager(PlayerView playerView, GemView gemView, SpriteAnimator spriteAnimator)
+        public GemManager(LevelObjectView playerView, LevelObjectView gemView, SpriteAnimator spriteAnimator)
         {
             _playerView = playerView;
             _spriteAnimator = spriteAnimator;
@@ -22,12 +22,13 @@ namespace ProjectPlatformer
             _spriteAnimator.StartAnimation(_gemView.SpriteRenderer, AnimState.IDLE, true, _animationSpeed);
         }
 
-        private void OnLevelObjectContact(GemView contactView)
+        private void OnLevelObjectContact(LevelObjectView contactView)
         {
-            
-            _spriteAnimator.StopAnimation(contactView.SpriteRenderer);
-            GameObject.Destroy(contactView.gameObject);
-            
+            if (contactView.GetComponent<GemView>())
+            {
+                _spriteAnimator.StopAnimation(contactView.SpriteRenderer);
+                GameObject.Destroy(contactView.gameObject);
+            }
         }
 
         public void Dispose()

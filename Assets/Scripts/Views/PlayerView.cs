@@ -5,8 +5,6 @@ namespace ProjectPlatformer
 {
     internal class PlayerView : LevelObjectView
     {
-        public Action<GemView> OnLevelObjectContact { get; set; }
-
         private Vector3 _leftScale = new Vector3(-1, 1, 1);
         private Vector3 _rightScale = new Vector3(1, 1, 1);
         public void MoveHorizontal(float velocity)
@@ -26,7 +24,7 @@ namespace ProjectPlatformer
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            var levelObject = collision.gameObject.GetComponent<GemView>();
+            var levelObject = collision.gameObject.GetComponent<LevelObjectView>();
             OnLevelObjectContact?.Invoke(levelObject);
         }
     }

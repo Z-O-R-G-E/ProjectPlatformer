@@ -78,8 +78,10 @@
     <Compile Include="Assets\Scripts\Interfaces\IFixedExecute.cs" />
     <Compile Include="Assets\Scripts\Managers\GemManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelCompleteManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\ObjectPool.cs" />
     <Compile Include="Assets\Scripts\Managers\ParalaxManager.cs" />
     <Compile Include="Assets\Scripts\Managers\SpriteAnimator.cs" />
+    <Compile Include="Assets\Scripts\Managers\ViewServices.cs" />
     <Compile Include="Assets\Scripts\Models\BulletModel.cs" />
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Models\TurretModel.cs" />
