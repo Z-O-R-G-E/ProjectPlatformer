@@ -86,6 +86,10 @@
     <Compile Include="Assets\Scripts\Models\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Models\TurretModel.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\SpriteAnimationsConfig.cs" />
+    <Compile Include="Assets\Scripts\SimpleAI\AIConfig.cs" />
+    <Compile Include="Assets\Scripts\SimpleAI\EnemiesConfigurator.cs" />
+    <Compile Include="Assets\Scripts\SimpleAI\SimplePatrolAI.cs" />
+    <Compile Include="Assets\Scripts\SimpleAI\SimplePatrolAIModel.cs" />
     <Compile Include="Assets\Scripts\Views\BulletView.cs" />
     <Compile Include="Assets\Scripts\Views\GemView.cs" />
     <Compile Include="Assets\Scripts\Views\LevelObjectView.cs" />
