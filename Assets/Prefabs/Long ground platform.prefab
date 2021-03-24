@@ -253,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3633463416043881466}
   - component: {fileID: 7045992968445252090}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Long ground platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
